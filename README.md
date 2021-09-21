@@ -45,6 +45,7 @@ NameVirtualHost *:4001
 ```
 * Restart Apache in de XAMP instance.
 * Verplaats alle inhoud van de repository die je hebt gecloned naar: `C:/xampp/apps/healthone/htdocs`
+* Open nu de `C:/xampp/apps/healthone/htdocs` in PHPStorm.
 
 ## MacOS
 Zorg ervoor dat de Virtual host config file ingeladen wordt:
@@ -82,6 +83,7 @@ NameVirtualHost *:4001
 ```
 * Restart Apache in de XAMP instance.
 * Verplaats alle inhoud van de repository die je hebt gecloned naar: `/Applications/XAMPP/xamppfiles/apps/healthone/htdocs`
+* Open nu de `/Applications/XAMPP/xamppfiles/apps/healthone/htdocs` in PHPStorm.
 
 ### Host file aanpassen
 Met de hostfile kan je de `localhost` of een ip omzetten naar een bepaalde url voor in de browser.

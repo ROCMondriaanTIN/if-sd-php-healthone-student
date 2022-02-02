@@ -1,0 +1,5 @@
+RewriteEngine on
+# Rewrite all the files to index.php /random -> /index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php [NC,L,QSA]
+

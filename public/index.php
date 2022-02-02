@@ -1,7 +1,14 @@
 <?php
-require '../Modules/Categories.php';
-require '../Modules/Products.php';
-// require '../Modules/Database.php';
+include_once ('../Classes/Category.php');
+include_once ('../Classes/Product.php');
+
+require '../Modules/common.php';
+require '../Modules/categories.php';
+require '../Modules/products.php';
+// require '../Modules/database.php';
+
+define("DOC_ROOT", realpath(dirname(__DIR__)));
+define("TEMPLATE_ROOT", realpath(DOC_ROOT . "/Templates") . "/");
 
 $request = $_SERVER['REQUEST_URI'];
 $params = explode("/", $request);
@@ -11,36 +18,36 @@ $titleSuffix = "";
 switch ($params[1]) {
     case 'categories':
         $titleSuffix = ' | Categories';
-        
-        if (isset($_GET['category_id'])) {
-            $categoryId = $_GET['category_id'];
+        // TODO Toon de categorieen
+        $categories = getCategories();
+        include_once TEMPLATE_ROOT . "categories.php";
+        break;
+
+    case 'category':
+        if($_GET['id']) {
             $products = getProducts($categoryId);
             $name = getCategoryName($categoryId);
-
-            if (isset($_GET['product_id'])) {
-                $productId = $_GET['product_id'];
-                $product = getProduct($productId);
-                $titleSuffix = ' | ' . $product->name;
-                if(isset($_POST['name']) && isset($_POST['review'])) {
-                    saveReview($_POST['name'],$_POST['review']);
-                    $reviews=getReviews($productId);
-                }
-                // TODO Zorg dat je hier de product pagina laat zien
-            } else {
-                // TODO Zorg dat je hier alle producten laat zien van een categorie
-            }
-        } else {
-            // TODO Toon de categorieen
-            $categories = getCategories();
-            include_once "../Templates/categories.php";
+            $titleSuffix = ' | ' . $name;
+            // TODO Zorg dat je hier alle producten laat zien van een categorie
         }
         break;
-    default:
+        
+    case 'product':
+        if($_GET['id']) {
+            $productId = $_GET['product_id'];
+            $product = getProduct($productId);
+            $titleSuffix = ' | ' . $product->name;
+            // TODO Zorg dat je hier de product pagina laat zien
+        }
+        break;
+    
+    case '':
+    case 'Home':
         $titleSuffix = ' | Home';
-        include_once "../Templates/home.php";
-}
-
-function getTitle() {
-    global $title, $titleSuffix;
-    return $title . $titleSuffix;
+        include_once TEMPLATE_ROOT . "home.php";
+        break;
+    
+    default:
+        $titleSuffix = ' | 404';
+        include_once TEMPLATE_ROOT . "404.php";
 }

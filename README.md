@@ -23,9 +23,9 @@ ServerName localhost
 Listen 4001    
 NameVirtualHost *:4001
 <VirtualHost *:80 *:4001>
-    DocumentRoot "C:/xampp/apps/healthone/htdocs"
+    DocumentRoot "C:/xampp/apps/healthone/htdocs/public"
     ServerName healthone.localhost
-    <Directory "C:/xampp/apps/healthone/htdocs">
+    <Directory "C:/xampp/apps/healthone/htdocs/public">
         Options Indexes FollowSymLinks ExecCGI Includes
 
         # AllowOverride controls what directives may be placed in .htaccess files.
@@ -61,9 +61,9 @@ ServerName localhost
 Listen 4001    
 NameVirtualHost *:4001
 <VirtualHost *:80 *:4001>
-    DocumentRoot "/Applications/XAMPP/xamppfiles/apps/healthone/htdocs"
+    DocumentRoot "/Applications/XAMPP/xamppfiles/apps/healthone/htdocs/public"
     ServerName healthone.localhost
-    <Directory "/Applications/XAMPP/xamppfiles/apps/healthone/htdocs">
+    <Directory "/Applications/XAMPP/xamppfiles/apps/healthone/htdocs/public">
         Options Indexes FollowSymLinks ExecCGI Includes
 
         # AllowOverride controls what directives may be placed in .htaccess files.
